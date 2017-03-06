@@ -4,7 +4,7 @@ class PurchasesController < ApplicationController
 
   def index
     # get data on all vacines offered by PATS, 10 per page
-    @purchases = Purchase.alphabetical.paginate(page: params[:page]).per_page(10)
+    @purchases = Purchase.chronological.paginate(page: params[:page]).per_page(10)
   end
   
   def show
@@ -17,7 +17,8 @@ class PurchasesController < ApplicationController
   def create
     @purchase = Purchase.new(purchase_param)
     if @purchase.save
-      flash[:notice] = "Successfully added #{@purchase.name} for #{@purchase.animal.name} to PATS."
+      @purchase.reload
+      flash[:notice] = "Successfully added #{@purchase.name} for #{@purchase.animal.name} to Purchases."
       redirect_to @purchase
     else
       render action: 'new'

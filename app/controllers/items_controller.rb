@@ -2,14 +2,21 @@ class ItemsController < ApplicationController
   # A callback to set up an @item object to work with 
   before_action :set_item, only: [:show, :edit, :update, :destroy]
 
-    def index
+  def index
     # finding all the items in alphabetical order and return as an array
-    @items = Item.alphabetical.to_a
+    @boards = Item.active.for_category("boards")
+    @pieces = Item.active.for_category("pieces")
+    @clocks = Item.active.for_category("clocks")
+    @supplies = Item.active.for_category("supplies")
+    @inactive_items = Item.inactive
+
   end
 
   def show
-    # Ahow all the item prices related to that item
-    @item_prices = ItemPrice.for_item(@item.id).paginate(page: params[:page]).per_page(10)
+    # show price history
+    @item = Item.find(params[:id])
+    @price_history = ItemPrices.for_item(@item)
+    @similar_items
   end
 
   def new
@@ -42,8 +49,12 @@ class ItemsController < ApplicationController
 
   def destroy
     @item.destroy
-    flash[:notice] = "Successfully removed #{@item.name} from the PATS system."
+    flash[:notice] = "Successfully removed #{@item.name} from the system."
     redirect_to items_url
+  end
+
+  def view_reorder_list
+    @items = Item.need_reorder.alphabetical.to_a
   end
 
   private
