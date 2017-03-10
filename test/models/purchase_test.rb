@@ -6,7 +6,7 @@ class PurchaseTest < ActiveSupport::TestCase
 
   # test validations with matchers
   should validate_numericality_of(:quantity).only_integer
-  should allow_value(Date.today).for(:date)
+  should allow_value(Date.current).for(:date)
   should allow_value(1.day.ago.to_date).for(:date)
   should_not allow_value(1.day.from_now.to_date).for(:date)
 

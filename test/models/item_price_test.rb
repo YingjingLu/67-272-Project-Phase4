@@ -6,7 +6,7 @@ class ItemPriceTest < ActiveSupport::TestCase
 
   # test validations with matchers
   should validate_numericality_of(:price).is_greater_than_or_equal_to(0)
-  should allow_value(Date.today).for(:start_date)
+  should allow_value(Date.current).for(:start_date)
   should allow_value(1.day.ago.to_date).for(:start_date)
   should_not allow_value(1.day.from_now.to_date).for(:start_date)
 
@@ -32,11 +32,11 @@ class ItemPriceTest < ActiveSupport::TestCase
       deny @bad_price.valid?
     end 
 
-    should "verify that the old price end_date set to today" do
+    should "verify that the old price end_date set to current" do
       assert_nil @wtp3.end_date
       @change_price = FactoryGirl.create(:item_price, item: @weighted_pieces, price: 9.95)
       @wtp3.reload
-      assert_equal Date.today, @wtp3.end_date
+      assert_equal Date.current, @wtp3.end_date
     end
 
     should "have a working scope called current" do

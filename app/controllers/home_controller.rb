@@ -3,8 +3,7 @@ class HomeController < ApplicationController
   end
 
   def home
-    @query = params[:query]
-    @items_to_reorder = Item.search(@query)
+    @items_to_reorder = Item.need_reorder
   end
 
   def about

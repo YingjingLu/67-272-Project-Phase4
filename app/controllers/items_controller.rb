@@ -15,8 +15,8 @@ class ItemsController < ApplicationController
   def show
     # show price history
     @item = Item.find(params[:id])
-    @price_history = ItemPrices.for_item(@item)
-    @similar_items
+    @price_history = ItemPrice.for_item(@item)
+    @similar_items = Item.for_category(@item.category).active - [@item]
   end
 
   def new

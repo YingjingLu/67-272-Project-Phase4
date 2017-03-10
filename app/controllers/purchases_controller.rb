@@ -16,9 +16,9 @@ class PurchasesController < ApplicationController
   
   def create
     @purchase = Purchase.new(purchase_param)
+    @purchase.date = Date.current
     if @purchase.save
-      @purchase.reload
-      flash[:notice] = "Successfully added #{@purchase.name} for #{@purchase.animal.name} to Purchases."
+      flash[:notice] = "Successfully added to Purchases."
       redirect_to @purchase
     else
       render action: 'new'
