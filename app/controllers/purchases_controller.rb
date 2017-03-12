@@ -18,8 +18,8 @@ class PurchasesController < ApplicationController
     @purchase = Purchase.new(purchase_param)
     @purchase.date = Date.current
     if @purchase.save
-      flash[:notice] = "Successfully added to Purchases."
-      redirect_to @purchase
+      flash[:notice] = "Successfully added a purchase for #{@purchase.quantity} #{@purchase.item.name}."
+      redirect_to purchases_url
     else
       render action: 'new'
     end
@@ -30,8 +30,8 @@ class PurchasesController < ApplicationController
   
   def update
     if @purchase.update_attributes(purchase_param)
-      flash[:notice] = "Successfully updated #{@purchase.name} for #{@purchase.animal.name}."
-      redirect_to @purchase
+      flash[:notice] = "Successfully updated #{@purchase.quantity} for #{@purchase.item.name}."
+      redirect_to purchases_url
     else
       render action: 'edit'
     end
@@ -40,14 +40,14 @@ class PurchasesController < ApplicationController
   def destroy
     @purchase = Purchase.find(params[:id])
     @purchase.destroy
-    flash[:notice] = "Successfully destroyed #{@purchase.name} for #{@purchase.animal.name}."
+    flash[:notice] = "Successfully destroyed #{@purchase.quantity} for #{@purchase.item.name}."
     redirect_to purchases_url
   end
 
   private
   # Use callbacks to share common setup or constraints between actions.
   def set_purchase
-    @vaccince = Purchase.find(params[:id])
+    @purchase = Purchase.find(params[:id])
   end
   # Never trust parameters from the scary internet, only allow the white list through.
   def purchase_param
