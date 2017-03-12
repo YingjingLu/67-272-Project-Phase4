@@ -1,0 +1,42 @@
+<h1>View Item Details</h1><br/>
+
+<% if @item.blank? || @price_history.blank?%>
+    <p>No Such Item Found</p>
+<% else %>
+    <h2><%=  @item.name %></h2>
+    <p>Price: <%= @item.item_prices.current.first %></p>
+    <p><%=  @item.description %></p>
+    <p>Inventory Level: <%=  @item.inventory_level %></p>
+    <p>Color: <%=  @item.color %></p>
+
+    <h2>Price History</h2>
+    <table>
+        <tr>
+            <th>Price</th>
+            <th>Start Date</th>
+        </tr>
+        <% @price_history.each do |p| %>
+            <tr>
+                <td><%= p.price %></td>
+                <td><%= p.start_date %></td>
+            </tr>
+        <% end %>
+    </table>
+
+    <% if @similar_items.blank? == false %>
+        <h2>Similar Items</h2>
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Price</th>
+            </tr>
+            <% @similar_items.each do |s| %>
+                <tr>
+                    <td><%= s.name %></td>
+                    <td><%= s.item_prices.current.first %></td>
+                </tr>
+            <% end %>
+        </table>
+    <% end %>
+
+<% end %>
