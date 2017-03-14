@@ -1,0 +1,58 @@
+<h2>Update Item</h2>
+
+<%= form_for(@item)do |f| %>
+    <% if @item.errors.any? %>
+        <div id = "error">
+        <h2><%= pluralize(@item.errors.count, "error") %> Prohibit this Item from being saved.</h2>
+        
+        <ul>
+            <% @item.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+        </ul>
+        </div>
+    <% end %>
+
+
+<div class="row">
+    <div class="input-field col s12">
+      <%= f.label :name %><br/>
+      <%= f.text_field :name %>
+    </div>
+</div>
+
+<div class="row">
+<form class="col s12">
+  <div class="row">
+    <div class="input-field col s12">
+      <%= f.label :description %><br/>
+      <%= f.text_field :description %>
+    </div>
+  </div>
+</form>
+</div>
+
+<div class="row">
+    <div class="input-field col s6">
+        <%= f.label :category %><br/>
+        <%= f.select(:category, options_for_select([['Boards','boards'],['Pieces','pieces'],['Clocks','clocks'],['Supplies','supplies']]))%>
+    </div>
+
+    <div class="input-field col s6">
+      <%= f.label :color %><br/>
+      <%= f.text_field :color %>
+    </div>
+</div>
+
+<div class="row">
+    <div class="input-field col s12">
+      <%= f.label :weight %><br/>
+      <%= f.text_field :weight %>
+    </div>
+</div>
+
+<div class="row">
+    <%= f.submit %>
+</div>
+
+<% end %>

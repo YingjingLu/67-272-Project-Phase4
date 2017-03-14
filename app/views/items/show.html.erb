@@ -33,7 +33,7 @@
             <% @similar_items.each do |s| %>
                 <tr>
                     <td><%= s.name %></td>
-                    <td><%= s.item_prices.current.first %></td>
+                    <td><%= s.item_prices.current.chronological.first %></td>
                 </tr>
             <% end %>
         </table>

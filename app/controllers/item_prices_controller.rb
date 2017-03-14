@@ -10,6 +10,7 @@ class ItemPricesController < ApplicationController
   end
 
   def show
+      @show_price = ItemPrice.for_item(params[:item_id]).chronological
   end
 
   def new

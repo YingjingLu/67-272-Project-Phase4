@@ -1,0 +1,50 @@
+<h1>Single Item Price History</h1><br/>
+
+<% if @show_price.blank? %>
+    <div>
+        <h2>No Available Item Prices</h2>
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+            </tr>
+
+                <tr>
+                    <td>N/A</td>
+                    <td>N/A</td>
+                    <td>N/A</td>
+                    <td>N/A</td>
+                </tr>
+
+        </table>
+    </div>
+
+<% else %>
+    <h2>Item Price History</h2>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Category</th>
+            <th>Inventory</th>
+        </tr>
+
+        <% @show_price.each do |price| %>
+            <tr>
+                <td><%= link_to price.items.name, item_path(price.item_id)%></td>
+                <td><%= price.price %></td>
+                <td><%= price.start_date %></td>
+                <td>
+                    <% if price.end_date.nil? %>
+                        <%= 'N/A' %>
+                    <% else %>
+                        <%= price.inventory_level %>
+                    <% end %>
+                </td>
+            </tr>
+        <% end %>
+
+    </table>
+<% end %>

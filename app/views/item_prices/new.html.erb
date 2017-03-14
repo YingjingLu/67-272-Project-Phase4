@@ -1,0 +1,40 @@
+<h2>New Price</h2>
+
+<%= form_for(@item)do |f| %>
+    <% if @item.errors.any? %>
+        <div id = "error">
+        <h2><%= pluralize(@item.errors.count, "error") %> Prohibit this Item from being saved.</h2>
+        
+        <ul>
+            <% @item.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+        </ul>
+        </div>
+    <% end %>
+
+
+<div class="row">
+    <div class="input-field col s12">
+      <%= f.label :name %><br/>
+      <%= f.select :item_id, get_item_options, prompt: "Select ..." %>
+    </div>
+</div>
+
+<div class="row">
+<form class="col s12">
+  <div class="row">
+    <div class="input-field col s12">
+      <%= f.label :price %><br/>
+      <%= f.text_field :price %>
+    </div>
+  </div>
+</form>
+</div>
+
+
+<div class="row">
+    <%= f.submit 'Create Item price' %>
+</div>
+
+<% end %>
