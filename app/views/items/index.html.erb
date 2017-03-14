@@ -18,7 +18,7 @@
         <% @boards.each do |board| %>
             <tr>
                 <td><%= link_to board.name, item_path(board)%></td>
-                <td><%= board.item_prices.current.chronological.first %></td>
+                <td><%= number_to_currency(board.current_price, precision: 2) %></td>
                 <td><%= board.category %></td>
                 <td><%= board.inventory_level %></td>
             </tr>
@@ -37,7 +37,7 @@
         <% @pieces.each do |piece| %>
             <tr>
                 <td><%= link_to piece.name, item_path(piece)%></td>
-                <td><%= piece.item_prices.current.chronological.first %></td>
+                <td><%= number_to_currency(piece.current_price, precision: 2) %></td>
                 <td><%= piece.category %></td>
                 <td><%= piece.inventory_level %></td>
             </tr>
@@ -56,7 +56,7 @@
         <% @clocks.each do |clock| %>
             <tr>
                 <td><%= link_to clock.name, item_path(clock)%></td>
-                <td><%= clock.item_prices.current.chronological.first %></td>
+                <td><%= number_to_currency(clock.current_price, precision: 2) %></td>
                 <td><%= clock.category %></td>
                 <td><%= clock.inventory_level %></td>
             </tr>
@@ -76,7 +76,7 @@
         <% @supplies.each do |supply| %>
             <tr>
                 <td><%= link_to supply.name, item_path(supply)%></td>
-                <td><%= supply.item_prices.current.chronological.first %></td>
+                <td><%= number_to_currency(supply.current_price, precision: 2) %></td>
                 <td><%= supply.category %></td>
                 <td><%= supply.inventory_level %></td>
             </tr>
@@ -105,3 +105,11 @@
 <% end %>
 
 <%= link_to 'New Item', new_item_path %>
+
+<div>
+<%= link_to "Purchases", purchases_path %>
+<br/>
+</div>
+<div>
+<%= link_to "Prices", item_prices_path %>
+</div>

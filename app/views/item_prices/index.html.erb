@@ -33,14 +33,14 @@
 
         <% @active_items.each do |price| %>
             <tr>
-                <td><%= link_to price.items.name, item_path(price.item_id)%></td>
+                <td><%= link_to price.item.name, item_path(price.item_id)%></td>
                 <td><%= price.price %></td>
                 <td><%= price.start_date %></td>
                 <td>
                     <% if price.end_date.nil? %>
                         <%= 'N/A' %>
                     <% else %>
-                        <%= price.inventory_level %>
+                        <%= price.item.inventory_level %>
                     <% end %>
                 </td>
             </tr>
