@@ -6,8 +6,10 @@
     </div>
 
 <% else %>
+    
+    <div class="container">
     <h2>Available Items</h2>
-    <table>
+    <table class ="highlight">
         <tr>
             <th>Name</th>
             <th>Price</th>
@@ -19,72 +21,45 @@
             <tr>
                 <td><%= link_to board.name, item_path(board)%></td>
                 <td><%= number_to_currency(board.current_price, precision: 2) %></td>
-                <td><%= board.category %></td>
+                <td><%= board.category.sub(/^(.)/) { $1.capitalize } %></td>
                 <td><%= board.inventory_level %></td>
             </tr>
         <% end %>
 
-    </table>
-
-    <table>
-        <tr>
-            <th>Name</th>
-            <th>Price</th>
-            <th>Category</th>
-            <th>Inventory</th>
-        </tr>
 
         <% @pieces.each do |piece| %>
             <tr>
                 <td><%= link_to piece.name, item_path(piece)%></td>
                 <td><%= number_to_currency(piece.current_price, precision: 2) %></td>
-                <td><%= piece.category %></td>
+                <td><%= piece.category.sub(/^(.)/) { $1.capitalize } %></td>
                 <td><%= piece.inventory_level %></td>
             </tr>
         <% end %>
 
-    </table>
-
-    <table>
-        <tr>
-            <th>Name</th>
-            <th>Price</th>
-            <th>Category</th>
-            <th>Inventory</th>
-        </tr>
 
         <% @clocks.each do |clock| %>
             <tr>
                 <td><%= link_to clock.name, item_path(clock)%></td>
                 <td><%= number_to_currency(clock.current_price, precision: 2) %></td>
-                <td><%= clock.category %></td>
+                <td><%= clock.category.sub(/^(.)/) { $1.capitalize } %></td>
                 <td><%= clock.inventory_level %></td>
             </tr>
         <% end %>
 
-    </table>
-
-
-    <table>
-        <tr>
-            <th>Name</th>
-            <th>Price</th>
-            <th>Category</th>
-            <th>Inventory</th>
-        </tr>
 
         <% @supplies.each do |supply| %>
             <tr>
                 <td><%= link_to supply.name, item_path(supply)%></td>
                 <td><%= number_to_currency(supply.current_price, precision: 2) %></td>
-                <td><%= supply.category %></td>
+                <td><%= supply.category.sub(/^(.)/) { $1.capitalize } %></td>
                 <td><%= supply.inventory_level %></td>
             </tr>
         <% end %>
 
     </table>
-
-    <table>
+    <br/>
+    <h2>Inactive Items</h2>
+    <table class ="highlight">
         <tr>
             <th>Name</th>
             <th>Price</th>
@@ -96,20 +71,11 @@
             <tr>
                 <td><%= link_to inactive.name, item_path(inactive)%></td>
                 <td><%= inactive.item_prices.current.chronological.first %></td>
-                <td><%= inactive.category %></td>
+                <td><%= inactive.category.sub(/^(.)/) { $1.capitalize } %></td>
                 <td><%= inactive.inventory_level %></td>
             </tr>
         <% end %>
 
     </table>
 <% end %>
-
-<%= link_to 'New Item', new_item_path %>
-
-<div>
-<%= link_to "Purchases", purchases_path %>
-<br/>
-</div>
-<div>
-<%= link_to "Prices", item_prices_path %>
 </div>

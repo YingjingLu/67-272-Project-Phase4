@@ -1,4 +1,4 @@
-<h1>Item_prices Index Page</h1><br/>
+<h1>Current Item Price</h1><br/>
 
 <% if @active_items.blank? %>
     <div>
@@ -34,7 +34,7 @@
         <% @active_items.each do |price| %>
             <tr>
                 <td><%= link_to price.item.name, item_path(price.item_id)%></td>
-                <td><%= price.price %></td>
+                <td><%= number_to_currency(price.price, precision: 2) %></td>
                 <td><%= price.start_date %></td>
                 <td>
                     <% if price.end_date.nil? %>

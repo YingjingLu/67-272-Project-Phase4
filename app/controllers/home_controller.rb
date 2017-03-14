@@ -3,7 +3,7 @@ class HomeController < ApplicationController
   end
 
   def home
-    @items_to_reorder = Item.need_reorder
+    @items_to_reorder = Item.active.need_reorder.alphabetical
   end
 
   def about
