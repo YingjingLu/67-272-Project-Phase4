@@ -1,1 +1,44 @@
-<h1>Recent Purchases</h1>
+<div class="container">
+<h1>Recent Purchases</h1><br/>
+
+<% if @purchases.blank? %>
+    <div>
+        <h4>No Purchases</h4>
+        <table>
+            <tr>
+                <th>Item</th>
+                <th>Quantity</th>
+                <th>Date</th>
+            </tr>
+
+                <tr>
+                    <td>N/A</td>
+                    <td>N/A</td>
+                    <td>N/A</td>
+                </tr>
+
+        </table>
+    </div>
+
+<% else %>
+    <h4>Available Item Quantitys</h4>
+    <table>
+        <tr>
+            <th>Item</th>
+            <th>Price</th>
+            <th>Date</th>
+        </tr>
+
+        <% @purchases.each do |p| %>
+            <tr>
+                <td><%= link_to p.item.name, item_path(p.item_id)%></td>
+                <td><%= p.quantity %></td>
+                <td><%= p.date.strftime("%m/%d/%y") %></td>
+            </tr>
+        <% end %>
+
+    </table>
+<% end %>
+
+<%= link_to "New Purchase", new_purchase_path%>
+</div>

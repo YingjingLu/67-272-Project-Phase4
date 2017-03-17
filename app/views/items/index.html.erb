@@ -1,13 +1,14 @@
+<div class="container">
 <h1>Items Index Page</h1><br/>
 
-<% if @boards.blank? && @pieces.blank? && @clocks.blank? && @supplies.blank? && @inactive_items.blank? %>
+<% if @boards.blank? && @pieces.blank? && @clocks.blank? && @supplies.blank?  && @inactive_items.blank? %>
     <div>
         <p>There are no items in the system at this time </p>
     </div>
 
 <% else %>
     
-    <div class="container">
+    
     <h2>Available Items</h2>
     <table class ="highlight">
         <tr>
