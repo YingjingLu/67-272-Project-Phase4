@@ -18,8 +18,8 @@ class PurchasesController < ApplicationController
     @purchase = Purchase.new(purchase_param)
     @purchase.date = Date.current
     if @purchase.save
-      flash[:notice] = "Successfully added a purchase for #{@purchase.quantity} #{@purchase.item.name}."
-      redirect_to purchases_url
+      
+      redirect_to purchases_url, notice: "Successfully added a purchase for #{@purchase.quantity} #{@purchase.item.name}."
     else
       render action: 'new'
     end
@@ -30,8 +30,8 @@ class PurchasesController < ApplicationController
   
   def update
     if @purchase.update_attributes(purchase_param)
-      flash[:notice] = "Successfully updated #{@purchase.quantity} for #{@purchase.item.name}."
-      redirect_to purchases_url
+
+      redirect_to purchases_url, notice: "Successfully updated #{@purchase.quantity} for #{@purchase.item.name}."
     else
       render action: 'edit'
     end
@@ -40,8 +40,8 @@ class PurchasesController < ApplicationController
   def destroy
     @purchase = Purchase.find(params[:id])
     @purchase.destroy
-    flash[:notice] = "Successfully destroyed #{@purchase.quantity} for #{@purchase.item.name}."
-    redirect_to purchases_url
+    
+    redirect_to purchases_url, notice:"Successfully destroyed #{@purchase.quantity} for #{@purchase.item.name}."
   end
 
   private

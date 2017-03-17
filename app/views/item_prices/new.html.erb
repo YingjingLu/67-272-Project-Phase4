@@ -1,12 +1,12 @@
 <h2>New Price</h2>
 
-<%= form_for(@item)do |f| %>
-    <% if @item.errors.any? %>
+<%= form_for(@itemPrice)do |f| %>
+    <% if @itemPrice.errors.any? %>
         <div id = "error">
-        <h2><%= pluralize(@item.errors.count, "error") %> Prohibit this Item from being saved.</h2>
+        <h2><%= pluralize(@itemPrice.errors.count, "error") %> Prohibit this itemPrice from being saved.</h2>
         
         <ul>
-            <% @item.errors.full_messages.each do |msg| %>
+            <% @itemPrice.errors.full_messages.each do |msg| %>
                 <li><%= msg %></li>
             <% end %>
         </ul>

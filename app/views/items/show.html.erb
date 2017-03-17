@@ -1,27 +1,34 @@
 <h1>View Item Details</h1><br/>
 
-<% if @item.blank? || @price_history.blank?%>
+<% if @item.blank? %>
     <p>No Such Item Found</p>
 <% else %>
+    <p><%= notice %></p>
     <h2><%=  @item.name %></h2>
-    <p>Price: <%= number_to_currency(@item.current_price, precision: 2) %></p>
-    <p><%=  @item.description %></p>
+    <p><% if @item.current_price.blank? != true %>
+        <%= 'Price: ' + number_to_currency(@item.current_price, precision: 2) %>   
+       <% else %> 
+        <%= 'Price: N/A' %> <% end %></p>
+    <p><%=  'Description: ' + @item.description %></p>
     <p>Inventory Level: <%=  @item.inventory_level %></p>
+    <p>Reorder Level: <%=  @item.reorder_level %></p>
     <p>Color: <%=  @item.color %></p>
 
-    <h2>Price History</h2>
-    <table>
-        <tr>
-            <th>Price</th>
-            <th>Start Date</th>
-        </tr>
-        <% @price_history.each do |p| %>
+    <% if @item.item_prices.blank? != true %>
+        <h2>Price History</h2>
+        <table>
             <tr>
-                <td><%= number_to_currency(p.price, precision: 2) %></td>
-                <td><%= p.start_date %></td>
+                <th>Price</th>
+                <th>Start Date</th>
             </tr>
-        <% end %>
-    </table>
+            <% @price_history.each do |p| %>
+                <tr>
+                    <td><%= number_to_currency(p.price, precision: 2) %></td>
+                    <td><%= p.start_date %></td>
+                </tr>
+            <% end %>
+        </table>
+    <% end %>
 
     <% if @similar_items.blank? == false %>
         <h2>Similar Items</h2>

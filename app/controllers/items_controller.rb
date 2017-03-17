@@ -30,8 +30,7 @@ class ItemsController < ApplicationController
     @item = Item.new(item_params)
     if @item.save
       # if saved to database
-      flash[:notice] = "Successfully created #{@item.name}."
-      redirect_to @item # go to show item page
+      redirect_to @item, notice: "Successfully created #{@item.name}" # go to show item page
     else
       # return to the 'new' form
       render action: 'new'
@@ -40,8 +39,7 @@ class ItemsController < ApplicationController
 
   def update
     if @item.update_attributes(item_params)
-      flash[:notice] = "Successfully updated #{@item.name}."
-      redirect_to @item
+      redirect_to @item, notice: "Successfully updated #{@item.name}"
     else
       render action: 'edit'
     end
@@ -49,8 +47,7 @@ class ItemsController < ApplicationController
 
   def destroy
     @item.destroy
-    flash[:notice] = "Successfully removed #{@item.name} from the system."
-    redirect_to items_url
+    redirect_to items_url, notice: "Successfully removed #{@item.name} from the system."
   end
 
   def view_reorder_list

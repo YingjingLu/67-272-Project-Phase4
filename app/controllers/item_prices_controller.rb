@@ -6,7 +6,7 @@ class ItemPricesController < ApplicationController
   
   def index
     # get data on all itemPrices and paginate the output to 10 per page
-    @active_items = ItemPrice.chronological.paginate(page: params[:page]).per_page(10)
+    @active_items = ItemPrice.current.chronological
   end
 
   def show
@@ -25,7 +25,7 @@ class ItemPricesController < ApplicationController
     @itemPrice = ItemPrice.new(itemPrice_params)
     if @itemPrice.save
       @item = @itemPrice.item
-      redirect_to @item, notice: "Changed the price of Basic Chess Pieces."
+      redirect_to @item, notice: "Changed the price of #{@itemPrice.item.name}."
     else
       render action: 'new'
     end
