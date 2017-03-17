@@ -23,9 +23,10 @@ class ItemPricesController < ApplicationController
   def create
 
     @itemPrice = ItemPrice.new(itemPrice_params)
+    @itemPrice.start_date = Date.current.to_date
     if @itemPrice.save
       @item = @itemPrice.item
-      redirect_to @item, notice: "Changed the price of #{@itemPrice.item.name}."
+      redirect_to @item, notice: "Changed the price of #{@item.name}"
     else
       render action: 'new'
     end
@@ -33,7 +34,7 @@ class ItemPricesController < ApplicationController
 
   def update
     if @itemPrice.update_attributes(itemPrice_params)
-      redirect_to @item, notice: "Updated #{@itemPrice.id}'s information"
+      redirect_to @item, notice: "Changed the price of #{@item.name}"
     else
       render action: 'edit'
     end

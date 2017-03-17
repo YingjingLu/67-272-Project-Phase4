@@ -13,11 +13,11 @@
         </div>
     <% end %>
 
-
+<fieldset>
 <div class="row">
     <div class="input-field col s12">
       <%= f.label :name %><br/>
-      <%= f.select :item_id, get_item_options, prompt: "Select ..." %>
+      <%= f.select :item_id, get_item_options, {include_blank: "Select Item Name"}, {:class => "browser-default"} %>
     </div>
 </div>
 
@@ -36,5 +36,7 @@
 <div class="row">
     <%= f.submit 'Create Item price' %>
 </div>
+
+</fieldset>
 
 <% end %>
