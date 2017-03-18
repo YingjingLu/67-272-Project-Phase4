@@ -4,7 +4,7 @@
 <% if @active_items.blank? %>
     <div>
         <h4>No Available Item Prices</h4>
-        <table>
+        <table class ="highlight">
             <tr>
                 <th>Name</th>
                 <th>Price</th>
@@ -24,7 +24,7 @@
 
 <% else %>
     <h4>Available Item Prices</h4>
-    <table>
+    <table class ="highlight">
         <tr>
             <th>Item</th>
             <th>Price</th>
@@ -49,6 +49,6 @@
 
     </table>
 <% end %>
-
+<br/>
 <%= link_to "New Item Price", new_item_price_path%>
 </div>
