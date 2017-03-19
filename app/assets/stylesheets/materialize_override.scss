@@ -25,6 +25,7 @@ fieldset{
     width: 80%;
 }
 
-*::after{
-    color: #64B5F6;
+#align_bottom{
+    position: relative;
+    bottom: 0;
 }

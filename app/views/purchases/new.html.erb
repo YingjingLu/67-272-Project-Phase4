@@ -1,3 +1,4 @@
+<div class="container">
 <h2>New Purchase</h2>
 
 <%= form_for(@purchase)do |f| %>
@@ -13,30 +14,37 @@
         </div>
     <% end %>
 
-<fieldset>
-<div class="row">
-    <div class="input-field col s12">
-      <%= f.label :name %><br/>
-      <%= f.select :item_id, get_item_options, {include_blank: "Select Item Name"}, {:class => "browser-default"} %>
+  <fieldset>
+    <div class="row">
+        <div class="input-field col s12">
+          <%= f.label :name %><br/><br/>
+          <%= f.select :item_id, get_item_options, {include_blank: "Select Item Name"}, {:class => "browser-default"} %>
+        </div>
     </div>
-</div>
 
-<div class="row">
-<form class="col s12">
-  <div class="row">
-    <div class="input-field col s12">
-      <%= f.label :quantity %><br/>
-      <%= f.text_field :quantity %>
+    <div class="row">
+      <form class="col s12">
+        <div class="row">
+          <div class="input-field col s12">
+            <%= f.label :quantity %><br/>
+            <%= f.text_field :quantity %>
+          </div>
+        </div>
+      </form>
     </div>
-  </div>
-</form>
-</div>
 
 
-<div class="row">
-    <%= f.submit 'Create Purchase' %>
-</div>
+    <div class="row">
+      <div class="col s2 offset-s9">
+        <%= f.submit "Create Purchase", class:"waves-effect waves-light btn" %>
+      </div>
+        <div class = "col s1">
+          <%= link_to "Cancel", purchases_path, class:"waves-effect waves-light btn" %>
+        </div>
+    </div>
 
-</fieldset>
+  </fieldset>
 
 <% end %>
+
+</div>

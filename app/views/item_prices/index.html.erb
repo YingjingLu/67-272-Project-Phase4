@@ -1,6 +1,10 @@
 <div class="container">
 <h1>Current Item Prices</h1><br/>
-
+<div class="row">  
+    <div class="col s2 offset-s10">
+    <%= link_to "New Item Price", new_item_price_path, class:"waves-effect waves-light btn" %>
+</div>
+</div>
 <% if @active_items.blank? %>
     <div>
         <h4>No Available Item Prices</h4>
@@ -50,5 +54,4 @@
     </table>
 <% end %>
 <br/>
-<%= link_to "New Item Price", new_item_price_path%>
 </div>

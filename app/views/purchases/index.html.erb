@@ -1,5 +1,15 @@
 <div class="container">
-<h1>Recent Purchases</h1><br/>
+<h1>Recent Purchases</h1>
+
+<div class="row">  
+    <div class="col s9">
+        <h4>Available Item Quantity</h4>
+    </div>
+
+    <div class="col s3" id = "align_bottom">
+        <%= link_to "New Purchase", new_purchase_path, class:"waves-effect waves-light btn"%>
+    </div>
+</div>
 
 <% if @purchases.blank? %>
     <div>
@@ -21,7 +31,7 @@
     </div>
 
 <% else %>
-    <h4>Available Item Quantity</h4>
+    
     <table class ="highlight">
         <tr>
             <th>Item</th>
@@ -40,5 +50,5 @@
     </table>
 <% end %>
 
-<%= link_to "New Purchase", new_purchase_path%>
+
 </div>
