@@ -26,7 +26,7 @@ class ItemPricesController < ApplicationController
     @itemPrice.start_date = Date.current.to_date
     if @itemPrice.save
       @item = @itemPrice.item
-      redirect_to @item, notice: "Changed the price of #{@item.name}"
+      redirect_to @item, notice: "Changed the price of #{@item.name}."
     else
       render action: 'new'
     end
@@ -34,7 +34,7 @@ class ItemPricesController < ApplicationController
 
   def update
     if @itemPrice.update_attributes(itemPrice_params)
-      redirect_to @item, notice: "Changed the price of #{@item.name}"
+      redirect_to @item, notice: "Changed the price of #{@item.name}."
     else
       render action: 'edit'
     end
@@ -42,7 +42,7 @@ class ItemPricesController < ApplicationController
 
   def destroy
     @itemPrice.destroy
-    redirect_to itemPrices_url, notice: "Removed #{@itemPrice.id} from the PATS system"
+    redirect_to itemPrices_url, notice: "Removed #{@itemPrice.id} from the PATS system."
   end
 
   private
