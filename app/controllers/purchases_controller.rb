@@ -19,7 +19,7 @@ class PurchasesController < ApplicationController
     @purchase.date = Date.current
     if @purchase.save
       
-      redirect_to purchases_url, notice: "Successfully added a purchase for #{@purchase.quantity} #{@purchase.item.name}."
+      redirect_to purchases_url, notice: "Successfully added a purchase for #{@purchase.quantity} #{@purchase.item.name}"
     else
       render action: 'new'
     end
@@ -31,7 +31,7 @@ class PurchasesController < ApplicationController
   def update
     if @purchase.update_attributes(purchase_param)
 
-      redirect_to purchases_url, notice: "Successfully updated #{@purchase.quantity} for #{@purchase.item.name}."
+      redirect_to purchases_url, notice: "Successfully updated #{@purchase.quantity} for #{@purchase.item.name}"
     else
       render action: 'edit'
     end

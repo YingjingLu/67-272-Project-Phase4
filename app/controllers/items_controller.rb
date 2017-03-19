@@ -49,7 +49,7 @@ class ItemsController < ApplicationController
 
   def destroy
     @item.destroy
-    redirect_to items_url, notice: "Successfully removed #{@item.name} from the system."
+    redirect_to items_url, notice: "Successfully removed #{@item.name} from the system"
   end
 
   def view_reorder_list
