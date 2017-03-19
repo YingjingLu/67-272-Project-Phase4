@@ -11,7 +11,8 @@
     </div>
 
 <% else %>
-    <table class ="highlight">
+    <div class="row"> 
+    <table class ="highlight" id="inactive_align">
         <tr>
             <th>Name</th>
             <th>Price</th>
@@ -59,9 +60,11 @@
         <% end %>
 
     </table>
+    </div>
     <br/>
     <h2>Inactive Items</h2>
-    <table class ="highlight">
+    <div class="row">
+    <table class ="highlight" id="inactive_align">
         <tr>
             <th>Name</th>
             <th>Price</th>
@@ -72,13 +75,19 @@
         <% @inactive_items.each do |inactive| %>
             <tr>
                 <td><%= link_to inactive.name, item_path(inactive)%></td>
-                <td><%= inactive.item_prices.current.chronological.first %></td>
+                <td><% if inactive.current_price.blank? != true %>
+                        <%= number_to_currency(inactive.current_price, precision: 2) %>   
+                    <% else %> 
+                        <%= 'N/A' %> 
+                    <% end %>
+                </td>
                 <td><%= inactive.category.sub(/^(.)/) { $1.capitalize } %></td>
                 <td><%= inactive.inventory_level %></td>
             </tr>
         <% end %>
 
     </table>
+    </div>
 <% end %>
 
 </div>
