@@ -1,8 +1,19 @@
+<div class="container">
 <h1>View Item Details</h1><br/>
+<div class="row">  
+    <div class="col s2 offset-s8">
+        <%= link_to "Edit", edit_item_path, class:"waves-effect waves-light btn" %>
+    </div>
+    <div class="col s2">
+    <%= link_to "All Items", items_path, class:"waves-effect waves-light btn" %>
+
+</div>
+</div>
 
 <% if @item.blank? %>
     <p>No Such Item Found</p>
 <% else %>
+    <div class = "row">
     <p><%= notice %></p>
     <h2><%=  @item.name %></h2>
     <p><% if @item.current_price.blank? != true %>
@@ -13,10 +24,13 @@
     <p>Inventory Level: <%=  @item.inventory_level %></p>
     <p>Reorder Level: <%=  @item.reorder_level %></p>
     <p>Color: <%=  @item.color %></p>
-
+    </div>
+    <div class="row">
     <% if @item.item_prices.blank? != true %>
         <h2>Price History</h2>
-        <table>
+        <div class = "row">
+        <div class = "col s12">
+        <table id="need_align">
             <tr>
                 <th>Price</th>
                 <th>Start Date</th>
@@ -28,11 +42,16 @@
                 </tr>
             <% end %>
         </table>
+        </div>
+        </div>
     <% end %>
 
+    
     <% if @similar_items.blank? == false %>
         <h2>Similar Items</h2>
-        <table>
+        <div class = "row">
+        <div class = "col s12">
+        <table id="need_align">
             <tr>
                 <th>Name</th>
                 <th>Price</th>
@@ -44,6 +63,11 @@
                 </tr>
             <% end %>
         </table>
+        </div>
+        </div>
     <% end %>
-
+    
 <% end %>
+</div>
+
+</div>

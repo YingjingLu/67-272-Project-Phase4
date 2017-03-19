@@ -1,5 +1,9 @@
 nav{
-    background-color: #424242;
+    background-color: #616161;
+}
+
+nav .brand-logo{
+    margin-left: 2em;
 }
 #footer{
     
@@ -7,4 +11,20 @@ nav{
 
 fieldset{
     border: 0px;
+}
+
+.btn{
+    background-color: #64B5F6;
+}
+
+#need_align th{
+    width: 80%;
+}
+
+#need_align td{
+    width: 80%;
+}
+
+*::after{
+    color: #64B5F6;
 }

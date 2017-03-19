@@ -1,3 +1,5 @@
+
+<div class="container">
 <h2>Update Item</h2>
 
 <%= form_for(@item)do |f| %>
@@ -13,7 +15,7 @@
         </div>
     <% end %>
 
-
+<fieldset>
 <div class="row">
     <div class="input-field col s12">
       <%= f.label :name %><br/>
@@ -34,8 +36,8 @@
 
 <div class="row">
     <div class="input-field col s6">
-        <%= f.label :category %><br/>
-        <%= f.select(:category, options_for_select([['Boards','boards'],['Pieces','pieces'],['Clocks','clocks'],['Supplies','supplies']]))%>
+        <%= f.label :category %><br/><br/>
+        <%= f.select(:category, [['Boards','boards'],['Pieces','pieces'],['Clocks','clocks'],['Supplies','supplies']],{include_blank: "Select Item Category"}, {:class => "browser-default"})%>
     </div>
 
     <div class="input-field col s6">
@@ -58,7 +60,21 @@
 </div>
 
 <div class="row">
-    <%= f.submit %>
+    <div class="input-field col s12">
+
+      <%= f.check_box :active, class: "browser-default" %>
+      <%= f.label :active %>
+    </div>
 </div>
 
+<div class="row">
+    <div class="col s2 offset-s8">
+      <%= f.submit "Update Item", class:"waves-effect waves-light btn"%>
+    </div>
+    <div class = "col s2">
+    <%= link_to "Cancel", items_path, class:"waves-effect waves-light btn" %>
+    </div>
+</div>
+</fieldset>
 <% end %>
+</div>
