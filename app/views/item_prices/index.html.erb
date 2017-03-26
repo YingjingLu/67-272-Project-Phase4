@@ -32,6 +32,7 @@
         <tr>
             <th>Item</th>
             <th>Price</th>
+            <th>Category</th>
             <th>Start Date</th>
             <th>End Date</th>
         </tr>
@@ -40,6 +41,7 @@
             <tr>
                 <td><%= link_to price.item.name, item_path(price.item_id)%></td>
                 <td><%= number_to_currency(price.price, precision: 2) %></td>
+                <td><%= price.category %></td>
                 <td><%= price.start_date %></td>
                 <td>
                     <% if price.end_date.nil? %>

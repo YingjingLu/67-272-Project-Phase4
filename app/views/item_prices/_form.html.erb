@@ -32,8 +32,8 @@
 
   <div class="row">
       <div class="input-field col s12">
-        <%= f.label :name %><br/><br/>
-        <%= f.select :item_id, price_category, {include_blank: "Select Item Name"}, {:class => "browser-default"} %>
+        <%= f.label :category %><br/><br/>
+        <%= f.select :category, price_category, {:class => "browser-default"}, {:selected => 'Manufacturer'} %>
       </div>
   </div>
 

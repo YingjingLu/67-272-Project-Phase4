@@ -28,7 +28,7 @@
             <th>Name</th>
             <th>Price</th>
             <th>Category</th>
-            <th>Inventory</th>
+            <th>Start Date</th>
         </tr>
 
         <% @show_price.each do |price| %>
@@ -36,6 +36,7 @@
                 <td><%= link_to price.items.name, item_path(price.item_id)%></td>
                 <td><%= price.price %></td>
                 <td><%= price.start_date %></td>
+                <td><%= price.category %></td>
                 <td>
                     <% if price.end_date.nil? %>
                         <%= 'N/A' %>

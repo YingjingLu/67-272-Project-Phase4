@@ -13,6 +13,7 @@ FactoryGirl.define do
   factory :item_price do
     association :item
     price 1.00
+    category 'manufacturer'
     start_date Date.current
     end_date nil
   end

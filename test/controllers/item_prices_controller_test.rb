@@ -24,11 +24,11 @@ class ItemPricesControllerTest < ActionController::TestCase
 
   test "should create a new item price" do
     assert_difference('ItemPrice.count') do
-      post :create, item_price: { item_id: @basic_pieces.id, price: 2.95, start_date: Date.current }
+      post :create, item_price: { item_id: @basic_pieces.id, price: 2.95,category:'manfacturer', start_date: Date.current }
     end
     assert_redirected_to item_path(assigns(:item))
     assert_equal "Changed the price of Basic Chess Pieces.", flash[:notice]
-    post :create, item_price: { item_id: @basic_pieces.id, price: -2.50, start_date: Date.current }
+    post :create, item_price: { item_id: @basic_pieces.id, price: -2.50,category:'manufacturer', start_date: Date.current }
     assert_template :new
   end
 end
