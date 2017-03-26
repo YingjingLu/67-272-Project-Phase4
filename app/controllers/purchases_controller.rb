@@ -18,7 +18,7 @@ class PurchasesController < ApplicationController
     @purchase = Purchase.new(purchase_param)
     @purchase.date = Date.current
     if @purchase.save
-      
+  
       redirect_to purchases_url, notice: "Successfully added a purchase for #{@purchase.quantity} #{@purchase.item.name}."
     else
       render action: 'new'

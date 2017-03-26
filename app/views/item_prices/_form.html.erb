@@ -1,0 +1,45 @@
+<%= form_for(@itemPrice)do |f| %>
+      <% if @itemPrice.errors.any? %>
+          <div id = "error">
+          <h2><%= pluralize(@itemPrice.errors.count, "error") %> Prohibit this itemPrice from being saved.</h2>
+          
+          <ul>
+              <% @itemPrice.errors.full_messages.each do |msg| %>
+                  <li><%= msg %></li>
+              <% end %>
+          </ul>
+          </div>
+      <% end %>
+
+  <fieldset>
+  <div class="row">
+      <div class="input-field col s12">
+        <%= f.label :name %><br/><br/>
+        <%= f.select :item_id, get_item_options, {include_blank: "Select Item Name"}, {:class => "browser-default"} %>
+      </div>
+  </div>
+
+  <div class="row">
+  <form class="col s12">
+    <div class="row">
+      <div class="input-field col s12">
+        <%= f.label :price %><br/>
+        <%= f.text_field :price %>
+      </div>
+    </div>
+  </form>
+  </div>
+
+
+    <div class="row">
+    <div class="col s2">
+      <%= f.submit "Create Item price", class:"waves-effect waves-light btn" %>
+    </div>
+      <div class = "col s1">
+        <%= link_to "Cancel", item_prices_path, class:"waves-effect waves-light btn" %>
+      </div>
+  </div>
+
+  </fieldset>
+
+<% end %>

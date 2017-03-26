@@ -52,6 +52,11 @@
         <% end %>
 
     </table>
+    
+    <br/>
+    <span class = "paginate">
+        <%= will_paginate @active_items, :previous_label => "Prev&nbsp;", :next_label => "&nbsp;Next" %>
+    </span>
 <% end %>
 <br/>
 </div>

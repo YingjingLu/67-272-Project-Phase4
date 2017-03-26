@@ -6,7 +6,7 @@ class ItemPricesController < ApplicationController
   
   def index
     # get data on all itemPrices and paginate the output to 10 per page
-    @active_items = ItemPrice.current.chronological
+    @active_items = ItemPrice.current.chronological.paginate(:page => params[:page]).per_page(10)
   end
 
   def show

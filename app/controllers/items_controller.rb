@@ -4,11 +4,11 @@ class ItemsController < ApplicationController
 
   def index
     # finding all the items in alphabetical order and return as an array
-    @boards = Item.active.for_category("boards")
-    @pieces = Item.active.for_category("pieces")
-    @clocks = Item.active.for_category("clocks")
-    @supplies = Item.active.for_category("supplies")
-    @inactive_items = Item.inactive
+    @boards = Item.active.for_category("boards").paginate(:page => params[:page]).per_page(10)
+    @pieces = Item.active.for_category("pieces").paginate(:page => params[:page]).per_page(10)
+    @clocks = Item.active.for_category("clocks").paginate(:page => params[:page]).per_page(10)
+    @supplies = Item.active.for_category("supplies").paginate(:page => params[:page]).per_page(10)
+    @inactive_items = Item.inactive.paginate(:page => params[:page]).per_page(10)
 
   end
 

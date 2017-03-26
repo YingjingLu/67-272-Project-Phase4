@@ -12,6 +12,7 @@
 
 <% else %>
     <div class="row"> 
+    <h2>Boards</h2>
     <table class ="highlight" id="inactive_align">
         <tr>
             <th>Name</th>
@@ -28,6 +29,20 @@
                 <td><%= board.inventory_level %></td>
             </tr>
         <% end %>
+    </table>
+    <br/>
+    <span class = "paginate">
+        <%= will_paginate @boards, :previous_label => "Prev&nbsp;", :next_label => "&nbsp;Next" %>
+    </span>
+    <br/>
+    <h2>Pieces</h2>
+    <table class ="highlight" id="inactive_align">
+        <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Category</th>
+            <th>Inventory</th>
+        </tr>
 
 
         <% @pieces.each do |piece| %>
@@ -38,7 +53,20 @@
                 <td><%= piece.inventory_level %></td>
             </tr>
         <% end %>
-
+    </table>
+    <br/>
+    <span class = "paginate">
+        <%= will_paginate @pieces, :previous_label => "Prev&nbsp;", :next_label => "&nbsp;Next" %>
+    </span>
+    <br/>
+    <h2>Clocks</h2>
+    <table class ="highlight" id="inactive_align">
+        <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Category</th>
+            <th>Inventory</th>
+        </tr>
 
         <% @clocks.each do |clock| %>
             <tr>
@@ -48,7 +76,20 @@
                 <td><%= clock.inventory_level %></td>
             </tr>
         <% end %>
-
+    </table>
+    <br/>
+    <span class = "paginate">
+        <%= will_paginate @clocks, :previous_label => "Prev&nbsp;", :next_label => "&nbsp;Next" %>
+    </span>
+    <br/>
+    <h2>Supplies</h2>
+    <table class ="highlight" id="inactive_align">
+        <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Category</th>
+            <th>Inventory</th>
+        </tr>
 
         <% @supplies.each do |supply| %>
             <tr>
@@ -58,8 +99,12 @@
                 <td><%= supply.inventory_level %></td>
             </tr>
         <% end %>
-
     </table>
+    <br/>
+    <span class = "paginate">
+        <%= will_paginate @supplies, :previous_label => "Prev&nbsp;", :next_label => "&nbsp;Next" %>
+    </span>
+
     </div>
     <br/>
     <h2>Inactive Items</h2>
@@ -87,6 +132,10 @@
         <% end %>
 
     </table>
+    <br/>
+    <span class = "paginate">
+        <%= will_paginate @inactive_items, :previous_label => "Prev&nbsp;", :next_label => "&nbsp;Next" %>
+    </span>
     </div>
 <% end %>
 
