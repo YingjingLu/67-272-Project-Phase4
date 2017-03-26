@@ -7,4 +7,8 @@ module ApplicationHelper
     def get_item_options
         Item.all.collect { |m| [m.name, m.id] }
     end
+
+    def price_category
+        [['Manufacturer','manufacturer'], ['Wholesale', 'wholesale']]
+    end
 end

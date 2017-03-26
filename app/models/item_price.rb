@@ -8,10 +8,13 @@ class ItemPrice < ActiveRecord::Base
   scope :for_date,      ->(date) { where("start_date <= ? AND (end_date > ? OR end_date IS NULL)", date, date) }
   scope :for_item,      ->(item_id) { where(item_id: item_id) }
 
+  @category_type = ['manufacturer', 'wholesale']
   # Validations
+  validates_prescence_of :price, :category, :start_date
   validates_numericality_of :price, greater_than_or_equal_to: 0
   validates_date :start_date, on_or_before: lambda { Date.current }
   validates_date :end_date, on_or_after: :start_date, allow_blank: true
+  validates :category, inclusion => {:in @category_type}
   validate :item_is_active_in_system
 
   # Callbacks

@@ -52,7 +52,7 @@ class ItemPricesController < ApplicationController
     end
     # Never trust parameters from the scary internet, only allow the white list through.
     def itemPrice_params
-      params.require(:item_price).permit(:item_id, :price, :start_date, :end_date)
+      params.require(:item_price).permit(:item_id, :price, :category, :start_date, :end_date)
     end
 
 
