@@ -7,6 +7,8 @@ class ItemPrice < ActiveRecord::Base
   scope :chronological, -> { order(start_date: :desc ) }
   scope :for_date,      ->(date) { where("start_date <= ? AND (end_date > ? OR end_date IS NULL)", date, date) }
   scope :for_item,      ->(item_id) { where(item_id: item_id) }
+  scope :wholesale,     -> { where("category = ?", 'wholesale') }
+  scope :manufacturer   -> { where("category = ?", 'manufacturer')}
 
   @category_type = ['manufacturer', 'wholesale']
   # Validations
@@ -20,6 +22,9 @@ class ItemPrice < ActiveRecord::Base
   # Callbacks
   before_create :set_end_date_of_old_price
 
+  def destroy
+    return true
+  end
   # Other methods
   private
   def item_is_active_in_system

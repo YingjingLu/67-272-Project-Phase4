@@ -15,6 +15,10 @@ class Purchase < ActiveRecord::Base
   # Callbacks
   before_create :update_item_inventory_level
 
+  def destroy
+    return true
+  end
+
   private
   def item_is_active_in_system
     all_active_items = Item.active.all.map(&:id)

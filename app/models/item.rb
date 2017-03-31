@@ -5,6 +5,7 @@ class Item < ActiveRecord::Base
   # Relationships
   has_many :item_prices
   has_many :purchases
+  has_many :order_item
 
   # Scopes
   scope :alphabetical, -> { order(:name) }
@@ -24,7 +25,16 @@ class Item < ActiveRecord::Base
 
   # Other methods
   def current_price
-    curr = self.item_prices.current.chronological.first
+    curr = self.item_prices.wholesale.current.first
+    if curr.nil?
+      return nil
+    else
+      return curr.price
+    end
+  end
+
+  def current_manufaturer_price
+    curr = self.item_prices.manufacturer.current.first
     if curr.nil?
       return nil
     else
@@ -33,7 +43,16 @@ class Item < ActiveRecord::Base
   end
 
   def price_on_date(date)
-    data = self.item_prices.for_date(date).chronological.first
+    data = self.item_prices.for_date(date).wholesale.chronological.first
+    if data.nil?
+      return nil
+    else
+      return data.price
+    end
+  end
+
+  def manufacturer_price_on_date(date)
+    data = self.item_prices.for_date(date).manufacturer.chronological.first
     if data.nil?
       return nil
     else
