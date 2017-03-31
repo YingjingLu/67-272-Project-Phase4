@@ -15,7 +15,7 @@ class OrderItem < ActiveRecord::Base
         current_inventory = corresponding_item.inventory_level
         corresponding_item.update_attribute(:inventory_level, (self.quantity + current_inventory)) unless previous.nil?
         self.update_attribute(:shipped_on, date.current.to_date)
-        
+
     def item_exists_and_active?
         all_active_items = Item.active.all.map(&:id)
         if all_active_items.include?(self.item_id)
@@ -23,6 +23,9 @@ class OrderItem < ActiveRecord::Base
         end
         errors.add(:item_id, "is not an active item at the chess store")
         return false
+    end
+
+    def subtotal(date = nil)
     end
 
     def valid_quantity?

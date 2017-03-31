@@ -22,4 +22,5 @@ class School < ActiveRecord::Base
   def destroy_no_order?
     return self.orders.first.blank?
   end
+  
 end
