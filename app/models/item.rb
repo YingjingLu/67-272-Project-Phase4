@@ -5,7 +5,7 @@ class Item < ActiveRecord::Base
   # Relationships
   has_many :item_prices
   has_many :purchases
-  has_many :order_item
+  has_many :order_items
 
   # Scopes
   scope :alphabetical, -> { order(:name) }

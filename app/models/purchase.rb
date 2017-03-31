@@ -19,7 +19,6 @@ class Purchase < ActiveRecord::Base
     return true
   end
 
-  private
   def item_is_active_in_system
     all_active_items = Item.active.all.map(&:id)
     unless all_active_items.include?(self.item_id)
